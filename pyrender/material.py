@@ -13,6 +13,7 @@ from .constants import TexFlags
 from .utils import format_color_vector, format_texture_source
 from .texture import Texture
 
+tex_map = {}
 
 @six.add_metaclass(abc.ABCMeta)
 class Material(object):
@@ -276,8 +277,18 @@ class Material(object):
         if isinstance(texture, Texture) or texture is None:
             return texture
         else:
-            source = format_texture_source(texture, target_channels)
-            return Texture(source=source, source_channels=target_channels)
+            global tex_map
+
+            pair = (id(texture), target_channels)
+
+            if pair in tex_map:
+                return tex_map[pair]
+            else:
+                source = format_texture_source(texture, target_channels)
+                tex = Texture(source=source, source_channels=target_channels)
+
+                tex_map[pair] = tex
+                return tex
 
 
 class MetallicRoughnessMaterial(Material):
