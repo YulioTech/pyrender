@@ -147,7 +147,8 @@ class Primitive(object):
             value = np.ascontiguousarray(value)
             if (value.ndim != 2 or value.shape[0] != self.positions.shape[0] or
                     value.shape[1] < 2):
-                raise ValueError('Incorrect texture coordinate shape')
+                #raise ValueError('Incorrect texture coordinate shape')
+                print('Incorrect texture coordinate shape')
             if value.shape[1] > 2:
                 value = value[:,:2]
         self._texcoord_0 = value
