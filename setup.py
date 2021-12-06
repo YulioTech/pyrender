@@ -25,7 +25,7 @@ requirements = [
 #    'PyOpenGL_accelerate==3.1.0', # For OpenGL
     'scipy',                      # Because of trimesh missing dep
     'six',                        # For Python 2/3 interop
-    'trimesh',                    # For meshes
+    'trimesh @ git+https://github.com/YulioTech/trimesh.git@main#egg=trimesh'
 ]
 
 dev_requirements = [
