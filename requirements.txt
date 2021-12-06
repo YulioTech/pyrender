@@ -11,5 +11,5 @@ sphinx
 sphinx_rtd_theme
 sphinx-automodapi
 
--e git://github.com/YulioTech/trimesh.git#egg=trimesh
+-e git://github.com/YulioTech/trimesh.git@fix-strides#egg=trimesh
 
