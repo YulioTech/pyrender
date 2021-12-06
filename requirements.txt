@@ -7,8 +7,9 @@ pyglet==1.4.0a1
 PyOpenGL
 PyOpenGL_accelerate
 six
-trimesh
 sphinx
 sphinx_rtd_theme
 sphinx-automodapi
+
+-e git://github.com/YulioTech/trimesh.git#egg=trimesh
 
