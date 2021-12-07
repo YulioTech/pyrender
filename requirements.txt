@@ -3,7 +3,7 @@ imageio
 networkx
 numpy
 Pillow
-pyglet==1.4.0a1
+pyglet>=1.4.10
 PyOpenGL
 PyOpenGL_accelerate
 six
@@ -11,5 +11,5 @@ sphinx
 sphinx_rtd_theme
 sphinx-automodapi
 
--e git://github.com/YulioTech/trimesh.git@fix-strides#egg=trimesh
+-e git://github.com/YulioTech/trimesh-fixes.git#egg=trimesh-fixes
 
