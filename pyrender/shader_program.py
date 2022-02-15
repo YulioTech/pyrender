@@ -52,7 +52,9 @@ class ShaderProgramCache(object):
                 continue
             _, name = os.path.split(fn)
             shader_names.append(name)
-        cid = OpenGL.contextdata.getContext()
+        # HACK: for some reason a new context is being generated which causes the same mesh in different nodes to require a new shader, blowing up memory
+        # Disable caching using the id of the context for now, but this will break multithreading support as added in db1f6fd7bf48209cbd8b6c4b84e0856314b822c0 ,although afaik it's only used when the platform is pyglet (not osmesa that we are using)
+        cid = 0 #OpenGL.contextdata.getContext()
         key = tuple([cid] + sorted(
             [(s,1) for s in shader_names] + [(d, defines[d]) for d in defines]
         ))
