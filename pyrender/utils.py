@@ -56,6 +56,12 @@ def format_texture_source(texture, target_channels='RGB'):
 
     # Convert PIL images into numpy arrays
     if isinstance(texture, Image.Image):
+        # failure to convert to RGBA so strip alpha, convert to RGB, and re-add alpha
+        if texture.mode == 'LA':
+            alpha = texture.getchannel('A')
+            texture = texture.convert('RGB')
+            texture.putalpha(alpha)
+
         if texture.mode == 'P' and target_channels in ('RGB', 'RGBA'):
             texture = np.array(texture.convert(target_channels))
         else:
